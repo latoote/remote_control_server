@@ -27,7 +27,8 @@ io.on('connection', (socket) => {
   socket.on('screen_stream', (data) => {
   // Broadcast video stream data to all connected clients
     if (data) {
-      socket.broadcast.emit('screen_stream', data);
+      // ใช้ socket.broadcast เพื่อส่งข้อมูลไปยังผู้ใช้คนอื่น
+      socket.broadcast.emit('screen_stream', Buffer.from(data));
     }
   });
 
