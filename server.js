@@ -25,7 +25,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('screen_stream', (data) => {
-    socket.broadcast.emit('screen_stream', data);
+  // Broadcast video stream data to all connected clients
+    if (data) {
+      socket.broadcast.emit('screen_stream', data);
+    }
   });
 
   socket.on('disconnect', () => {
